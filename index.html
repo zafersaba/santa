@@ -15,9 +15,12 @@
           No collisions detected.
         </div>
         <div class="control">
+          <label for="treeCountInput">Number of trees</label>
+          <input id="treeCountInput" type="number" min="1" max="50" value="10" />
           <label for="rotationRange">Rotation (<span id="rotationValue">0 deg</span>)</label>
           <input id="rotationRange" type="range" min="0" max="360" value="0" />
           <div class="selected">Selected: <span id="selectedTree">None</span></div>
+          <div class="square-size">Bounding square: <span id="squareSize">--</span></div>
         </div>
         <ul class="tips">
           <li>Click a tree to select it.</li>

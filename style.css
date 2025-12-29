@@ -105,6 +105,14 @@ body {
   pointer-events: none;
 }
 
+#boundingSquare {
+  position: absolute;
+  border: 2px dashed #1f6d2f;
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px #e6e2dd;
+  pointer-events: none;
+}
+
 .tree {
   position: absolute;
   width: var(--tree-width);
