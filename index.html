@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tree Fit Playground</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="panel">
+        <h1>Tree Fit Playground</h1>
+        <p>Drag the trees into the clearing and rotate the selected tree.</p>
+        <div class="status" id="collisionStatus" role="status" aria-live="polite">
+          No collisions detected.
+        </div>
+        <div class="control">
+          <label for="rotationRange">Rotation (<span id="rotationValue">0 deg</span>)</label>
+          <input id="rotationRange" type="range" min="0" max="360" value="0" />
+          <div class="selected">Selected: <span id="selectedTree">None</span></div>
+        </div>
+        <ul class="tips">
+          <li>Click a tree to select it.</li>
+          <li>Use the slider to rotate the selected tree.</li>
+          <li>Collisions are highlighted in red.</li>
+        </ul>
+      </aside>
+      <main class="stage" id="stage" aria-label="Tree fitting area">
+        <div class="stage-grid"></div>
+      </main>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

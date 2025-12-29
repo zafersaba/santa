@@ -1,0 +1,150 @@
+:root {
+  color-scheme: light;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  background: #f7f5f2;
+  color: #1f1f1f;
+  --tree-height: 96px;
+  --tree-width: calc(var(--tree-height) * 0.7);
+  --tree-origin-y: 80%;
+  --tree-clip: polygon(
+    50% 0%,
+    67.86% 30%,
+    58.93% 30%,
+    78.57% 55%,
+    64.29% 55%,
+    100% 80%,
+    60.71% 80%,
+    60.71% 100%,
+    39.29% 100%,
+    39.29% 80%,
+    0% 80%,
+    35.71% 55%,
+    21.43% 55%,
+    41.07% 30%,
+    32.14% 30%
+  );
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  min-height: 100vh;
+}
+
+.panel {
+  background: #fff;
+  padding: 24px;
+  border-right: 1px solid #e6e2dd;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.panel h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.status {
+  padding: 12px;
+  border-radius: 12px;
+  background: #e9f7e5;
+  border: 1px solid #b7e2a9;
+  color: #2f6b1c;
+  font-weight: 600;
+}
+
+.status.warning {
+  background: #fde8e8;
+  border-color: #f2b9b9;
+  color: #9a1f1f;
+}
+
+.control {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 12px;
+  background: #f5f3f0;
+}
+
+.control input[type="range"] {
+  width: 100%;
+}
+
+.selected {
+  font-weight: 600;
+}
+
+.tips {
+  margin: 0;
+  padding-left: 18px;
+  color: #5b554f;
+}
+
+.stage {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at top, #f3fbe9 0%, #dff0c8 60%, #cbe3b1 100%);
+}
+
+.stage-grid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#ffffff88 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+}
+
+.tree {
+  position: absolute;
+  width: var(--tree-width);
+  height: var(--tree-height);
+  background: linear-gradient(180deg, #3aa64b 0%, #2f8f2f 60%, #1f6d2f 100%);
+  clip-path: var(--tree-clip);
+  transform-origin: 50% var(--tree-origin-y);
+  box-shadow:
+    0 6px 12px #2f8f2f44,
+    0 0 0 1px #2a752a55 inset;
+  cursor: grab;
+  user-select: none;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.tree.selected {
+  box-shadow:
+    0 6px 12px #2f8f2f44,
+    0 0 0 4px #ffe08a;
+}
+
+.tree.colliding {
+  background: linear-gradient(180deg, #e06767 0%, #d34b4b 60%, #a53131 100%);
+  box-shadow:
+    0 6px 12px #a5313144,
+    0 0 0 4px #ffb3b3;
+}
+
+.tree:active {
+  cursor: grabbing;
+}
+
+@media (max-width: 900px) {
+  .app {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  .panel {
+    border-right: none;
+    border-bottom: 1px solid #e6e2dd;
+  }
+}
